@@ -1,0 +1,35 @@
+cmake_minimum_required(VERSION 2.8.3)
+project(lab3)
+
+find_package(catkin REQUIRED COMPONENTS
+  roscpp
+  rospy
+  std_msgs
+)
+
+## Generate added messages and services
+generate_messages(DEPENDENCIES std_msgs)
+
+
+catkin_package(
+)
+
+include_directories(
+  ${catkin_INCLUDE_DIRS}
+)
+
+add_executable(listener src/listener.cpp)
+target_link_libraries(listener ${catkin_LIBRARIES})
+add_dependencies(listener lab3)
+
+add_executable(publisher src/publisher.cpp)
+target_link_libraries(publisher ${catkin_LIBRARIES})
+add_dependencies(publisher lab3)
+
+add_executable(part2publisher src/part2publisher.cpp)
+target_link_libraries(part2publisher ${catkin_LIBRARIES})
+add_dependencies(part2publisher lab3)
+
+add_executable(part2listener src/part2listener.cpp)
+target_link_libraries(part2listener ${catkin_LIBRARIES})
+add_dependencies(part2listener lab3)
